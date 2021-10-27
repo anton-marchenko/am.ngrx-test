@@ -12,10 +12,14 @@ export const selectCollectionState = createFeatureSelector<
   ReadonlyArray<string>
 >("collection");
 
+export const isDefinedGeneric = <T>(x: T | undefined | null): x is T => {
+  return x !== null && x !== undefined;
+};
+
 export const selectBookCollection = createSelector(
   selectBooks,
   selectCollectionState,
   (books: ReadonlyArray<Book>, collection: ReadonlyArray<string>) => {
-    return collection.map((id) => books.find((book) => book.id === id));
+    return collection.map((id) => books.find((book) => book.id === id)).filter(isDefinedGeneric);
   }
 );

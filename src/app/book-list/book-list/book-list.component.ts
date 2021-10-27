@@ -8,7 +8,7 @@ import { Book } from '@app/book-list/books.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BookListComponent implements OnInit {
-  @Input() books: Array<Book> | null = [];
+  @Input() books: ReadonlyArray<Book> | null = [];
   @Output() add = new EventEmitter();
 
   constructor() { }
