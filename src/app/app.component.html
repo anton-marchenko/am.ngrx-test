@@ -1,1 +1,6 @@
-<h1>{{title}}</h1>
+<h2>Books</h2>
+<am-book-list class="book-list" [books]="books$ | async" (add)="onAdd($event)"></am-book-list>
+
+<h2>My Collection</h2>
+<am-book-collection class="book-collection" [books]="bookCollection$ | async" (remove)="onRemove($event)">
+</am-book-collection>
