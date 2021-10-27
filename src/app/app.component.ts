@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { GoogleBooksService } from '@app/book-list/books.service';
+import { AppState } from '@app/state/app.state';
 import { addBook, removeBook, retrievedBookList } from '@app/state/books.actions';
 import { selectBookCollection, selectBooks } from '@app/state/books.selectors';
 import { Store } from '@ngrx/store';
@@ -24,7 +25,7 @@ export class AppComponent implements OnInit {
     this.store.dispatch(removeBook({ bookId }));
   }
 
-  constructor(private booksService: GoogleBooksService, private store: Store) {}
+  constructor(private booksService: GoogleBooksService, private store: Store<AppState>) {}
 
   ngOnInit() {
     this.booksService
